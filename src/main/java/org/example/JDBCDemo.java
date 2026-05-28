@@ -1,3 +1,5 @@
+package org.example;
+
 import java.sql.*;
 
 public class JDBCDemo {
@@ -8,18 +10,18 @@ public class JDBCDemo {
     public static void main(String[] args) {
         try (Connection conn = DriverManager.getConnection(URL, User, Password);) {
             System.out.println("Connected to database successfully");
-//            insertStudentss(conn, "muskanuu","mjshj@45");
-            updateStudents(conn,1,"mahi","mahi@hsadgh");
+            insertStudents(conn, "muskanuu","mjshj@45");
+//            updateStudents(conn,1,"mahi","mahi@hsadgh");
             selectStudents(conn);
-            deleteStudents(conn,1);
+//            deleteStudents(conn,1);
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
     }
-    private static void insertStudentss(Connection conn,String name, String email){
-        String sql = "INSERT INTO Studentss(name,email) VALUES('"+name+";"+email+"')";
+    private static void insertStudents(Connection conn,String name, String email){
+        String sql = "INSERT INTO Students(name,email) VALUES('"+name+";"+email+"')";
     try(Statement stmt = conn.createStatement()){
         int rows = stmt.executeUpdate(sql);
         System.out.println("INSERTED: " + rows);
